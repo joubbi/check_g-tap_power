@@ -12,7 +12,7 @@ releases:
     description: "1.1 Release"
     files: 
       - 
-        name: check_g-tap_power
+        name: check_g-tap_power.exp
         url: "file:///check_g-tap_power.exp"
         description: "First public release"
         checksum: bc223b0a2869094de41dd6f579a1615d
