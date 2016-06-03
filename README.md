@@ -3,7 +3,7 @@
 This is a script that checks the AC status of a Gigamon G-TAP-ATX.
 The script logs in and connects with telnet to the tap,
 then issues a "show system" and looks for the power status.
-(The tap doesn't support a more secure protocol)
+(The device doesn't support a more secure protocol)
 
 Tested with G-TAP-ATX   Firmware Version: 2.2.27
 
