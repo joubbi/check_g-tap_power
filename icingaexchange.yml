@@ -15,4 +15,4 @@ releases:
         name: check_g-tap_power.exp
         url: "file:///check_g-tap_power.exp"
         description: "First public release"
-        checksum: bc223b0a2869094de41dd6f579a1615d
+        checksum: 880a3bff5d3d20b351729329c7ad3a8c
