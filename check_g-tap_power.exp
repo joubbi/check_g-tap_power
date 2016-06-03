@@ -1,0 +1,78 @@
+#!/usr/bin/expect -f
+
+######################################################################
+#                                                                    #
+# This is a script that checks the AC status of a Gigamon G-TAP-ATX. #
+# The script logs in and connects with telnet to the tap,            #
+# then issues a "show system" and looks for the power status.        #
+# (The device doesn't support a more secure protocol)                #
+#                                                                    #
+# Make sure that you have expect installed on your system.           #
+# Supply the hostname or IP address of the tap as an argument.       #
+#                                                                    #
+# The script can be added to Op5 or some other Nagios like system.   #
+#                                                                    #
+# Tested with G-TAP-ATX   Firmware Version: 2.2.27                   #
+#                                                                    #
+# Version history:                                                   #
+# 1.1 2016-06-02 Minor cleanup of dialogues and help.                #
+# 1.0 2015-10-23 Initial version.                                    #
+#                                                                    #
+# Licensed under the Apache version 2 license.                       #
+# Written by farid.joubbi@consign.se                                 #
+#                                                                    #
+######################################################################
+
+
+set timeout 10
+set IPaddress [lindex $argv 0]
+set Password [lindex $argv 1]
+
+# Change log_user from 0 to 1 if you want to see what happens.
+log_user 0
+
+
+if {[llength $argv] != 2} {
+  send_user "Wrong amount of arguments!\nUsage: ./check_g-tap_power.exp hostname/address password\n"
+  exit 3
+}
+
+# you might have to change the path to telnet below.
+spawn /usr/bin/telnet $IPaddress
+expect {
+  timeout {
+    send_user "\ntelnet to $IPaddress timed out!\n"
+    exit 2
+  }
+  "Login Password: "
+}
+sleep 2
+send "$Password\r"
+
+expect {
+  "Wrong Password!" {
+    send_user "\nWrong password!\n"
+    exit 2
+  }
+  "G-Tap>"
+}
+
+# Finally logged in.
+send "show system\r"
+expect {
+  "Charging" {
+    send_user "The battery is charging.\n"
+    exit 1
+  }
+  "AC adapter=\\\[OFF\\\]" {
+    send_user "The AC adapter is unplugged!\n"
+    exit 2
+  }
+  "G-Tap>" {
+    send_user "Battery charged and AC adapter connected.\n"
+    send "exit\r"
+    exit 0
+  }
+}
+send "exit\r"
+exit 3
