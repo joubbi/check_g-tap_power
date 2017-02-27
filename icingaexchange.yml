@@ -3,7 +3,7 @@ description: "file:///README.md"
 url: "https://gitlab.com/faridj/check_g-tap_power.git"
 tags: tap
 vendor: Gigamon
-target: Network
+target: Network, Snmp
 type: Plugin
 license: Apache v2
 releases: 
@@ -15,4 +15,4 @@ releases:
         name: check_g-tap_power.exp
         url: "file:///check_g-tap_power.exp"
         description: "First public release"
-        checksum: 880a3bff5d3d20b351729329c7ad3a8c
+        checksum: e9a776ba745f1ab9fbd84eb08c82498f 
