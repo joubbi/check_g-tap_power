@@ -19,9 +19,10 @@ Define the command like this:
 check_g-tap_power.exp $HOSTADDRESS$ $ARG1$
 ```
 
+
 Tested with G-TAP-ATX Firmware Version: 2.2.27
 
-## Version history:
+## Version history
 * 1.1 2016-06-02 Minor cleanup of dialogues and help.
 * 1.0 2015-10-23 Initial version.
 
