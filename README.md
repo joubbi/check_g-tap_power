@@ -6,11 +6,11 @@ The script logs in and connects with telnet to the tap,
 then issues a "show system" and looks for the power status.
 (The device doesn't support a more secure protocol)
 
-Tested with G-TAP-ATX Firmware Version: 2.2.27
 
+## Usage
 Make sure that you have expect installed on your system.
 
-Supply the hostname or IP address of the tap as an argument to the script.
+Supply the hostname or IP address of the tap and the telnet password as arguments to the script.
 
 The script can be added to Op5 or some other Nagios like system.
 
@@ -18,6 +18,8 @@ Define the command like this:
 ```sh
 check_g-tap_power.exp $HOSTADDRESS$ $ARG1$
 ```
+
+Tested with G-TAP-ATX Firmware Version: 2.2.27
 
 ## Version history:
 * 1.1 2016-06-02 Minor cleanup of dialogues and help.
