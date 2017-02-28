@@ -13,6 +13,6 @@ releases:
     files: 
       - 
         name: check_g-tap_power.exp
-        url: "file:///check_g-tap_power.exp"
+        url: "https://gitlab.com/faridj/check_g-tap_power/raw/master/check_g-tap_power.exp"
         description: "First public release"
         checksum: e9a776ba745f1ab9fbd84eb08c82498f 
